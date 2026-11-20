@@ -33,7 +33,7 @@ if getattr(sys, "frozen", False):
     DATA_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "CustomRemoteScreensaver"
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 else:
-    APP_DIR = Path(__file__).resolve().parent
+    APP_DIR = Path(__file__).resolve().parent.parent
     DATA_DIR = APP_DIR
 
 BASE_DIR = DATA_DIR
@@ -105,7 +105,7 @@ def set_startup_enabled(enable: bool) -> bool:
         else:
             target = Path(sys.executable).resolve()
             args = f'"{Path(__file__).resolve()}"'
-            workdir = Path(__file__).resolve().parent
+            workdir = APP_DIR
 
         lnk_path.parent.mkdir(parents=True, exist_ok=True)
         ps_script = (

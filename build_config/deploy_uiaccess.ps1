@@ -3,7 +3,8 @@ $ErrorActionPreference = "Stop"
 
 try {
     $ScriptDir   = Split-Path -Parent $MyInvocation.MyCommand.Path
-    $DistDir     = Join-Path $ScriptDir "dist\CustomScreensaver"
+    $ProjectRoot = Split-Path -Parent $ScriptDir
+    $DistDir     = Join-Path $ProjectRoot "dist\CustomScreensaver"
     $InstallDir  = "C:\Program Files\CustomScreensaver"
     $ExePath     = Join-Path $InstallDir "CustomScreensaver.exe"
     $CertSubject = "CN=CustomRemoteScreensaver Local UIAccess"
@@ -55,7 +56,7 @@ try {
         Remove-Item $InstallDir -Recurse -Force
     }
     Copy-Item -Path $DistDir -Destination $InstallDir -Recurse -Force
-    $seedCfg = Join-Path $ScriptDir "config.json"
+    $seedCfg = Join-Path $ProjectRoot "config.json"
     if (Test-Path $seedCfg) {
         Copy-Item -Path $seedCfg -Destination (Join-Path $InstallDir "config.json") -Force
     }
@@ -69,7 +70,7 @@ try {
     }
 
     $WshShell = New-Object -ComObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut((Join-Path $ScriptDir "启动UIAccess屏保(Band2).lnk"))
+    $Shortcut = $WshShell.CreateShortcut((Join-Path $ProjectRoot "启动UIAccess屏保(Band2).lnk"))
     $Shortcut.TargetPath = $ExePath
     $Shortcut.WorkingDirectory = $InstallDir
     $Shortcut.Description = "启动带 UIAccess (Band=2) 的自定义隐私屏保"

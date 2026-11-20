@@ -5,11 +5,30 @@
 - **物理显示器上**：全屏置顶显示自定义画面（系统维护、Windows 更新伪装、纯黑屏、或自定义图片/GIF），覆盖全部物理显示器。
 - **远控端（UU远程 / ToDesk / 向日葵等）**：操作系统底层自动将该遮罩层从录屏/捕获流中剔除，控制端看到的仍是清晰、可正常点击操作的真实桌面。
 
+## 目录结构
+
+```text
+├── src/                  # 核心 Python 源码（app.py / overlay.py / detector.py / win_api.py）
+├── scripts/              # 日常启动、调试与诊断脚本
+├── build_config/         # PyInstaller 打包配置、UIAccess 清单与签名部署脚本
+├── config.json           # 默认配置文件
+├── requirements.txt      # Python 依赖列表
+└── README.md
+```
+
+## 安装与打包
+
+```bash
+pip install -r requirements.txt
+pyinstaller --noconfirm --clean build_config/CustomScreensaver.spec
+```
+
 ## 快速开始
 
-- **日常使用（无黑框，常驻右下角系统托盘）**：双击 `启动屏保(无黑框).vbs`
-- **查看实时日志调试**：双击 `调试运行.bat`
-- **核对 UU远程 连接特征**：双击 `诊断远控检测.bat`
+- **UIAccess (Band=2) 部署（可覆盖 UU远程 隐私屏）**：先完成上方打包，再右键以管理员身份运行 `scripts\一键部署UIAccess(管理员).bat`
+- **日常使用（无黑框，常驻右下角系统托盘）**：双击 `scripts\启动屏保(无黑框).vbs`
+- **查看实时日志调试**：双击 `scripts\调试运行.bat`
+- **核对 UU远程 连接特征**：双击 `scripts\诊断远控检测.bat`
 
 ## 默认快捷键（全局有效，不抢焦点）
 
