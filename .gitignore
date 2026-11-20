@@ -1,0 +1,8 @@
+build/
+dist/
+__pycache__/
+*.py[cod]
+*.log
+*.lnk
+.DS_Store
+Thumbs.db

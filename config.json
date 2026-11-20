@@ -1,0 +1,29 @@
+{
+  "theme": "win_update",
+  "image_path": "",
+  "image_mode": "cover",
+  "maintenance_title": "SYSTEM LOCKED // 业务系统维护中",
+  "maintenance_subtitle": "请勿断开电源或操作键盘鼠标",
+  "hotkey_toggle": "ctrl+alt+s",
+  "hotkey_exit": "ctrl+alt+q",
+  "auto_detect": true,
+  "auto_detect_mode": "privacy_window",
+  "lock_on_end": false,
+  "remote_processes": [
+    "GameViewerServer.exe",
+    "MuMuRemoteBackend.exe",
+    "MuMuRemoteService.exe",
+    "UURemote.exe",
+    "ToDesk_Service.exe",
+    "ToDesk.exe",
+    "SunloginClient.exe",
+    "OrayRemoteService.exe",
+    "rustdesk.exe",
+    "AnyDesk.exe"
+  ],
+  "detect_interval_sec": 0.5,
+  "auto_hide_delay_sec": 1.0,
+  "topmost_refresh_ms": 100,
+  "cover_all_monitors": true,
+  "exclude_from_capture": true
+}
